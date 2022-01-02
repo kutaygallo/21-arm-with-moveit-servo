@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/catkin_tools/execution/executor.py", line 105, in async_job
+    **stage.async_execute_process_kwargs))
+  File "/usr/lib/python3/dist-packages/osrf_pycommon/process_utils/async_execute_process_asyncio/impl.py", line 137, in async_execute_process
+    stderr_to_stdout)
+  File "/usr/lib/python3/dist-packages/osrf_pycommon/process_utils/async_execute_process_asyncio/impl.py", line 80, in _async_execute_process_pty
+    stdout=stdout_slave, stderr=stderr_slave, close_fds=False)
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 1202, in subprocess_exec
+    protocol = protocol_factory()
+  File "/usr/lib/python3/dist-packages/osrf_pycommon/process_utils/async_execute_process_asyncio/impl.py", line 69, in protocol_factory
+    stderr=stderr_master
+  File "/usr/lib/python3/dist-packages/catkin_tools/execution/io.py", line 155, in init_proxy
+    return cls(label, job_id, stage_label, event_queue, log_path, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/catkin_tools/jobs/commands/cmake.py", line 164, in __init__
+    label, job_id, stage_label, event_queue, log_path, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/catkin_tools/execution/io.py", line 226, in __init__
+    IOBufferContainer.__init__(self, label, job_id, stage_label, event_queue, log_path)
+  File "/usr/lib/python3/dist-packages/catkin_tools/execution/io.py", line 87, in __init__
+    os.unlink(self.logfile_name)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kutaygallo/new_arm_ws/logs/test_servo/build.make.log'
+

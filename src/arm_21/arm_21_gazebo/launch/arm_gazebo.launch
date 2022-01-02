@@ -1,0 +1,83 @@
+<launch>
+
+    <arg name="not_paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+
+    <!-- <include file="$(find multimaster_launch)/launch/multimaster_gazebo_robot.launch">
+         Alt yürür için gerken multimaster node
+        <arg name="robot_namespace" value="rover_21_description" />
+    </include> -->
+    <!-- launch empty world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="paused" value="$(arg not_paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>
+
+    <!-- launch custom world if you want custom world un comment that line-->
+    <!-- <include file="$(find marsyard)/launch/arm_world.launch"/> -->
+
+    <!-- send urdf to the parameter server -->
+    <param name="robot_description" command="xacro --inorder $(find arm_21_gazebo)/urdf/arm_21_gazebo.urdf.xacro" />
+    <rosparam file="$(find arm_21_gazebo)/config/ros_control_params.yaml" command="load" /> <!-- load arm pid gains-->
+
+    <!-- <param command="$(find xacro)/xacro $(find panel_base_description)/urdf/panel_base.xacro" name="panel_description"/>   -->
+
+    <!-- spawn robotic arm -->
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model arm_21_gazebo" output="screen" />
+
+    <!-- load controller_list -->
+    <rosparam file="$(find new_arm_moveit_config)/config/ros_controllers.yaml"/>
+    <rosparam file="$(find arm_control)/config/arm21_controller.yaml" command="load"/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_group_position_controller rover_arm_controller" />
+     <!--<node pkg="interactive_marker_twist_server" type="marker_server" name="twist_marker_server" output="screen"/>  twist node-->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> <!-- robot state publisher-->
+    <rosparam file="$(find arm_control)/config/joint_state_controller.yaml" command="load"/>
+     <node name="joint_state_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn joint_state_controller" respawn="false" output="screen"/>
+
+    <!--<rosparam command="load" file="$(find rover_21_description)/config/control.yaml" />  load rover alt yurur control params
+    <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
+    <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/> -->
+
+    <!-- Test -->
+    <include file="$(find new_arm_moveit_config)/launch/planning_context.launch">
+        <arg name="load_robot_description" value="true"/>
+    </include>
+    <include file="$(find new_arm_moveit_config)/launch/move_group.launch" />
+    <!-- <include file="$(find new_arm_moveit_config)/launch/moveit_rviz.launch" /> -->
+
+    <node name="joint_state_desired_publisher" pkg="topic_tools" type="relay" args="joint_states joint_states_desired" />
+    <!-- Test end -->
+
+    <!-- Old panel if you want that old one uncomment this-->
+    <!--node
+    name="spawn_panel"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find panel)/robots/panel.urdf -urdf -x 1.1 -z 2.2 -Y -1.57 -model panel"
+    output="screen" /-->
+
+    <!-- New panel-->
+    <!-- <node args="-z 0.5 -x 2.0 -param panel_description -urdf -model panel_base" name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"/>  -->
+        <!-- load rover alt yurur control params-->
+    <!-- <rosparam command="load" file="$(find rover_21_description)/config/control.yaml" /> 
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="rover_joint_publisher rover_velocity_controller" />
+
+    <node pkg="interactive_marker_twist_server" type="marker_server" name="twist_marker_server" output="screen" />  -->
+
+    
+
+    <!-- <node pkg="twist_mux" type="twist_mux" name="twist_mux">
+        <rosparam command="load" file="$(find rover_21_description)/config/twist_mux.yaml" />
+        <remap from="cmd_vel_out" to="/rover_velocity_controller/cmd_vel" />
+    </node> -->
+
+    <include file="$(find arm_21_gazebo)/launch/arm_rviz.launch" />  <!--launch rviz -->
+    <!-- <include file="$(find arm_control)/launch/arm_21_controllers.launch" />  load arm controllers-->
+</launch>

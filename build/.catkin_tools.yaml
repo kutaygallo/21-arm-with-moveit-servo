@@ -1,0 +1,6 @@
+devel_space: /home/kutaygallo/new_arm_ws/devel
+install: false
+install_space: /home/kutaygallo/new_arm_ws/install
+profile: default
+source_space: /home/kutaygallo/new_arm_ws/src
+workspace: /home/kutaygallo/new_arm_ws

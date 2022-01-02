@@ -1,0 +1,1 @@
+/home/kutaygallo/new_arm_ws/devel/.private/arm_21_gazebo/lib/pkgconfig/arm_21_gazebo.pc

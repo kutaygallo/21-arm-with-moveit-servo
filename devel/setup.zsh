@@ -1,0 +1,1 @@
+/home/kutaygallo/new_arm_ws/devel/.private/catkin_tools_prebuild/setup.zsh

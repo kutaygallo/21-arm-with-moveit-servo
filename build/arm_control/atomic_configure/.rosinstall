@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/kutaygallo/new_arm_ws/devel/.private/arm_control/setup.sh

@@ -1,0 +1,19 @@
+roslaunch arm_21_gazebo arm_gazebo.launch
+------------
+rosservice call /controller_manager/switch_controller "start_controllers: ['joint_group_position_controller']
+stop_controllers: ['rover_arm_controller']
+strictness: 0
+start_asap: false
+timeout: 0.0"
+------------
+rosservice call /controller_manager/switch_controller "start_controllers: ['joint_state_controller']
+stop_controllers: []
+strictness: 0
+start_asap: false
+timeout: 0.0"
+------------
+roslaunch test_servo servo_node.launch
+------------
+rosrun joy joy_node
+------------
+rosrun test_servo joystick_op.py

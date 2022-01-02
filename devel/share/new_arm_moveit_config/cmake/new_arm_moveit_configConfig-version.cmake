@@ -1,0 +1,1 @@
+/home/kutaygallo/new_arm_ws/devel/.private/new_arm_moveit_config/share/new_arm_moveit_config/cmake/new_arm_moveit_configConfig-version.cmake

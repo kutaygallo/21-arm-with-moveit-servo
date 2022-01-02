@@ -1,0 +1,5 @@
+arm_21/arm_control
+/home/kutaygallo/new_arm_ws/devel/.private/arm_control/cmake.lock /home/kutaygallo/new_arm_ws/devel/./cmake.lock
+/home/kutaygallo/new_arm_ws/devel/.private/arm_control/lib/pkgconfig/arm_control.pc /home/kutaygallo/new_arm_ws/devel/lib/pkgconfig/arm_control.pc
+/home/kutaygallo/new_arm_ws/devel/.private/arm_control/share/arm_control/cmake/arm_controlConfig-version.cmake /home/kutaygallo/new_arm_ws/devel/share/arm_control/cmake/arm_controlConfig-version.cmake
+/home/kutaygallo/new_arm_ws/devel/.private/arm_control/share/arm_control/cmake/arm_controlConfig.cmake /home/kutaygallo/new_arm_ws/devel/share/arm_control/cmake/arm_controlConfig.cmake

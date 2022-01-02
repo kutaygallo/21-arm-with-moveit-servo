@@ -1,0 +1,5 @@
+new_arm_moveit_config
+/home/kutaygallo/new_arm_ws/devel/.private/new_arm_moveit_config/cmake.lock /home/kutaygallo/new_arm_ws/devel/./cmake.lock
+/home/kutaygallo/new_arm_ws/devel/.private/new_arm_moveit_config/lib/pkgconfig/new_arm_moveit_config.pc /home/kutaygallo/new_arm_ws/devel/lib/pkgconfig/new_arm_moveit_config.pc
+/home/kutaygallo/new_arm_ws/devel/.private/new_arm_moveit_config/share/new_arm_moveit_config/cmake/new_arm_moveit_configConfig.cmake /home/kutaygallo/new_arm_ws/devel/share/new_arm_moveit_config/cmake/new_arm_moveit_configConfig.cmake
+/home/kutaygallo/new_arm_ws/devel/.private/new_arm_moveit_config/share/new_arm_moveit_config/cmake/new_arm_moveit_configConfig-version.cmake /home/kutaygallo/new_arm_ws/devel/share/new_arm_moveit_config/cmake/new_arm_moveit_configConfig-version.cmake

@@ -1,0 +1,8 @@
+prefix=/home/kutaygallo/new_arm_ws/devel/.private/arm_21_gazebo
+
+Name: arm_21_gazebo
+Description: Description of arm_21_gazebo
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
